@@ -1,0 +1,14 @@
+class Solution:
+    def minimumPushes(self, word: str) -> int:
+        h = Counter(word)
+        s_hash = dict(sorted(h.items(), key = lambda item: item[1], reverse = True))        
+        x,y,res,i = 0,0,0,0
+        li = list(s_hash)
+        n = len(li)
+        while x < n:
+            x += 8
+            y += 1
+            while i < x and i < n:
+                res += s_hash[li[i]] * y
+                i += 1
+        return res
